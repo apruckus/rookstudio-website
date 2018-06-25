@@ -1,0 +1,39 @@
+@import '../../styles/variables.less';
+
+.heroSection{
+    margin-top: -70px;
+    padding: 230px 0 160px;
+    text-align: center;
+    background-color: @darkColor;
+    overflow: hidden;
+    .heroSection-details{
+        position: relative;
+        h1{
+            letter-spacing: 1px;
+            color:#fff;
+        }
+        p{
+            color:#f9f9f9;
+        }
+    }
+    
+    .scrollImage{
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background-position: center;
+        background-size: cover; 
+        &:after{
+            content: '';
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background-color: @darkColor;
+            opacity: .7;            
+        }   
+    }
+}

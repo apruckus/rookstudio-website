@@ -1,0 +1,48 @@
+{
+  "name": "grow-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "dev-webserver": "webpack-dev-server --progress --color",
+    "build": "webpack --progress --color",
+    "export": "webpack-dev-server --compress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.4.1",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.6",
+    "less": "^3.0.0-alpha.3",
+    "less-loader": "^4.0.5",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "aos": "^2.2.0",
+    "babel-polyfill": "^6.26.0",
+    "cleave.js": "^1.1.1",
+    "d3": "^4.13.0",
+    "feathers-client": "^2.4.0",
+    "less": "^3.0.0-alpha.3",
+    "lodash": "^4.17.5",
+    "md5": "^2.2.1",
+    "moment": "^2.20.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2",
+    "react-select": "^1.2.1",
+    "superagent": "^3.6.3",
+    "validator": "^9.4.1",
+    "webpack-dev-server": "^2.11.1"
+  }
+}

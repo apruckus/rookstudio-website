@@ -1,0 +1,229 @@
+@import './styles/spectre.min.css';
+@import './styles/spectreAddOns.less';
+@import './styles/variables.less';
+
+html{
+}
+body {
+    font-family: 'Rubik', sans-serif;
+    width: 100%;
+    z-index: 5;
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+#app{
+    background-color: #fff;
+    
+}
+
+h1, h2, h3, h3, h4, h5, h6{
+    font-weight:@fontBold;
+    letter-spacing: 1px;
+    color:@darkColor;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+b{
+    font-weight: @fontBold;
+}
+
+ul{
+    list-style: circle;
+}
+
+p, li{
+    font-weight: @fontRegular;
+    color: @greyDarkColor;
+}
+
+a{
+    box-shadow: none !important;
+    color:@primaryColor;
+}
+
+.page{
+    padding-top: 70px;
+}
+
+.btn{
+    border-radius:50px;
+    position: relative;
+    i{
+        pointer-events: none;
+        position: absolute;
+        right:20px;
+        top:50%;
+        transform: translateY(-50%);
+    }
+
+    &.btn-primary{
+        border: none;
+        background: @primaryColor;
+        padding: 15px 30px;
+        min-width: 200px;
+        height: auto;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: @fontSemibold;
+        box-shadow: rgba(113,140,244,.2) 0px 10px 30px;
+        vertical-align: middle;
+        &:before{
+            transition: .1s opacity ease;
+            content: '';
+            position: absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            border-radius: 50px;
+            background: rgba(0,0,0,0.1);
+            opacity: 0;
+            pointer-events: none;
+        }
+        &.disabled{
+            box-shadow: none;
+        }
+        &:hover{
+            background: @primaryColor;
+            &:before{
+                opacity: 1;
+            }
+        }
+        &:focus{
+            background: @primaryColor;
+            border: none;
+            &:before{
+                opacity: 1;
+            }
+        }
+        &.btn-icon {
+            padding-right: 60px;
+        }
+        &.btn-white {
+            background-color: #fff;
+            color: @primaryColor;
+        }
+    }
+}
+.hiddenCon{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: fixed;
+    width: 100%;
+    height: 50%;
+    top:-100%;
+    z-index: -1;
+}
+.section {
+    text-align: center;
+    padding: 5rem 0;
+    &:nth-child(even){
+        background-color: @backgroundColor;
+    }
+}
+
+.smallLogoSection{
+    padding: 30px 0 50px;
+    img{
+        max-height: 60px;
+    }
+}
+
+.pageSection{
+    padding: 140px 40px;
+    h4, h5{
+        margin-top: 40px;
+    }
+    h2{
+        margin-top: 80px;
+        color:@primaryColor;
+    }
+    img{
+        width: 100%;
+    }
+}
+
+.table{
+    margin:20px 0;
+    border:1px solid @greyLightColor;
+    td{
+        padding: 20px 10px;
+    }
+    p{
+        margin: 0;
+    }
+}
+
+form{
+    border:1px solid @greyLightColor;
+    background-color: #fff;
+    padding: 40px 60px;
+    input, select{
+        margin-top: 40px !important;
+    }
+}
+
+.stepList{
+    padding-top: 40px;
+    li{
+        margin: 0;
+        position: relative;
+        font-size: 26px;
+        list-style: none;
+        padding-left: 20px;
+        font-size: 20px;
+        display: block;
+        padding-bottom: 40px;
+        h4{
+            margin: 0 0 15px;
+            display: inline-block;
+        }
+        p{
+            margin-bottom: 0px;
+        }
+        span{
+            color:#fff;            
+            position: absolute;
+            top:0px;
+            left:-30px;
+            height: 35px;
+            width: 35px;
+            background-color: @greyColor;
+            border-radius: 50%;
+            padding: 4px 0;
+            text-align: center;
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            left:-13px;
+            top:15px;
+            bottom:0;
+            border-left: 1px dashed @greyColor;
+        }
+        &:last-child{
+            &:before {
+                display: none;
+            }
+        }
+    }
+}
+
+@media(max-width:@break-sm){
+    .col-max{
+        padding: 0 10px;
+    }
+    h1{
+        // font-size: 30px;
+    }
+    .pageSection{
+        padding: 80px 20px !important;
+    }
+    form{
+        border:none;
+        padding: 20px;
+    }        
+}

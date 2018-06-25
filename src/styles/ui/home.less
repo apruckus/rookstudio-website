@@ -1,0 +1,87 @@
+@import '../../styles/variables.less';
+
+.home{
+    .heroSection {
+        height: 100%;
+        background-color: @primaryColor;
+        text-align: left;
+        h1 { 
+            color: #fff;
+            font-size: 10vw;
+            margin-bottom: 0px;
+        }
+        h6 {
+            font-size: 2vw;
+            color: @darkColor;
+        }
+        .heroText {
+            padding: 180px 100px;
+        }
+    }
+
+    .projectSection {
+        padding: 180px 100px;
+        h2 {
+            font-size: 5vw;
+        }
+
+        .project {
+            margin-top: 180px;
+            margin-bottom: 300px;
+            h4{
+                font-weight: 500;
+                font-size: 32px;
+                letter-spacing: 1.2px;
+            }
+            .imageSection {
+                padding: 40px 0;
+                -webkit-backface-visibility: hidden;
+                .imageBackground {
+                    border-radius: 10px 0 0 10px;
+                    background-color: @greyColor;
+                    background-size: cover;
+                    // background-attachment: /;
+                    background-position: center;
+                    height: 450px;
+                   -webkit-backface-visibility: hidden;
+                    width: calc(~"100% + 100px");
+                    margin-right: -100px;
+                    img {
+                        margin-top: 30px;
+                        height: calc(~"100% + 150px");
+                    }
+                }
+                &.even {
+                    background-position: left;
+                    .imageBackground {
+                        border-radius: 0 10px 10px 0;
+                        margin-right: 0px;
+                        margin-left: -100px;
+                    }
+                }
+            }
+        }
+    }
+
+    .hireUsSection{
+        h4{
+            font-weight: 500;
+            font-size: 32px;
+            letter-spacing: 1.2px;
+            color: #fff;
+        }
+        .column {
+            padding: 35px;
+            &:first-child {
+                background-position: bottom right;
+                background-size: auto 100%;
+                background-repeat: no-repeat;
+            }
+        }
+        margin-top: 150px;
+        background-color: @primaryColor;
+        height: 450px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+}
