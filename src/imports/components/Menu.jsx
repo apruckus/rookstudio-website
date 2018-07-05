@@ -10,29 +10,24 @@ export default class Menu extends React.Component {
             menuOpen: false,
             links: [
                 {
-                    name: 'Tell Your Employer',
-                    url: '/tell-your-employer'
+                    scrollTo: true,
+                    name: 'Projects',
+                    url: '/projects'
                 },
                 {
-                    name: 'About Us',
+                    ext: true,
+                    newTab: true,
+                    name: 'Blog',
+                    url: 'https://medium.com/@amal.paul'
+                },
+                {
+                    name: 'About us',
                     url: '/about-us'
                 },
                 {
-                    ext:true,
-                    name: 'Blog',
-                    url: 'http://growsuper.com/blog'
-                },
-                {
-                    ext:true,
-                    newTab:true,
-                    name: 'FAQs',
-                    url: 'https://intercom.help/growsuper/for-faqs-sake'
-                },
-                {
-                    ext:true,
-                    newTab:true,
-                    name: 'Login',
-                    url: 'http://app.growsuper.com/login'
+                    ext: true,
+                    name: 'Contact',
+                    url: 'mailto:contact@rookstudio.co'
                 }
             ]
         }
@@ -40,43 +35,62 @@ export default class Menu extends React.Component {
         this.toggleMenu = this.toggleMenu.bind(this);
     }
 
-    toggleMenu(){
+    toggleMenu( item ){
         this.setState({
             menuOpen: !this.state.menuOpen
+        }, () => {
+            if( item.scrollTo ) {
+                this.props.scrollTo( item.url );
+           }
         })
     }
-
 
     render() {
         return (
             <div className={"menuWrapper columns " + (this.state.menuOpen ? " menu-open" : "")}>
                 <a href='/' className="logoWrapper">
-                    <img src="./build/images/logo_white.png" />
+                    <img src="/build/images/logo_white.png" />
                 </a>
                 <div id="menuBackground" className="menuBackground" ></div>
-                {/* <ul>
-                    {this.state.links.map((item,index) => {
-                        if(item.ext){
-                            return (
-                                <li key={index}>
-                                    <a href={item.url} target={item.newTab ? '_blank' : '_self'} onClick={this.toggleMenu}>{item.name}</a>
-                                </li>
-                            )
-                        }else{
-                            return (
-                                <li key={index}>
-                                    <Link to={item.url} onClick={this.toggleMenu}>{item.name}</Link>
-                                </li>
-                            )
-                        }
+              
+                        <div className="menuFullscreen">
+                             <div className="menuFullscreen-background" ></div>
+                            <ul className="col-12 abs-center-center">
+                                {this.state.links.map((item,index) => {
+                                    if(item.ext){
+                                        return (
+                                            <li key={index}>
+                                                <a href={item.url} target={item.newTab ? '_blank' : '_self'} onClick={() => {
+                                                    this.toggleMenu( item );
+                                                }}>
+                                                    <h1>{item.name}</h1>
+                                                </a>
+                                            </li>
+                                        )
+                                    }else{
+                                        return (
+                                            <li key={index}>
+                                                <Link to={item.url} onClick={() => {
+                                                    this.toggleMenu( item );
+                                                }}>
+                                                    <h1>{item.name}</h1>
+                                                </Link>
+                                            </li>
+                                        )
+                                    }
+                                    
+                                })}
+                            </ul>
+                        </div>
+                  
                         
-                    })}
-                </ul> */}
-
-                {/* MOBILE MENU */}
-                <div className="menu-overlay" onClick={this.toggleMenu}></div>
-                <button className="menu-btn show-md" onClick={this.toggleMenu}>
-                    <i className="material-icons">menu</i>
+                <button className="menu-btn" onClick={this.toggleMenu}>
+                    Menu
+                    <div className="menuIcon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </button>
             </div>
         );

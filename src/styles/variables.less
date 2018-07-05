@@ -51,6 +51,9 @@
       background-color: @backgroundColor;
     }
   }
+
+  @easeOut: cubic-bezier(0.075, 0.82, 0.165, 1);
+  @ease:  cubic-bezier(0.86, 0, 0.07, 1);
   //Keyframes
 .keyframes(@name,@rules) {
   @-webkit-keyframes @name {@rules();}
