@@ -3,15 +3,18 @@ import '../../styles/ui/home.less';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import Herosection from '../../imports/components/HeroSection.jsx';
+import { Parallax, ParallaxBanner } from 'react-scroll-parallax';
+
 
 export default class Home extends React.Component {
-    
+
     constructor(props, context) {
         super(props, context);
         this.state = {
             projects: [
                 {
                     title: 'HomeVue',
+                    oversize: true,
                     shortDescription: 'HomeVue(HV) is a business that is ensuring that the home buying process for potential home buyers is as seamless as possible.',
                     description: (
                         <div>
@@ -24,10 +27,11 @@ export default class Home extends React.Component {
                 },
                 {
                     title: 'Vleep',
+                    oversize: true,
                     shortDescription: 'Vleep is a business that enables medical practitioners to communicate with one another and create patient records in a secure and closed environment through a messaging platform.',
                     description: (
                         <div>
-                            <p>Vleep is a business that enables medical practitioners to communicate with one another and create patient records in a secure and closed environment through a messaging platform.</p> 
+                            <p>Vleep is a business that enables medical practitioners to communicate with one another and create patient records in a secure and closed environment through a messaging platform.</p>
                             <p>The brief was to create an application where photos could be taken, edited and used to start a conversation with other medical professionals however, these photos couldn't be stored in the photos file in the smart phone so as to adhere to privacy laws. In addition to this, we had to create the template for patient details to be captured and then present in a PDF to be sent to external programs.</p>
                             <p>From working on the UX/UI to ensure that the journey was simple and intuitive, to ensure that we met the unique requirements of where the data was to be stored to having a seamless messaging service we did it all. We built the mobile application on React Native since Vleep is exclusively a mobile application that still can utilise the camera and other functionalities on the smart phone more efficiently.</p>
                         </div>
@@ -36,6 +40,7 @@ export default class Home extends React.Component {
                 },
                 {
                     title: 'uPaged',
+                    oversize: true,
                     shortDescription: 'uPaged is a business that facilitates hospitals to hire medical practitioners to fill in shifts where they are understaffed.',
                     description: (
                         <div>
@@ -50,83 +55,107 @@ export default class Home extends React.Component {
         }
     }
 
-    componentDidMount(){
-        if( this.props.route === '/projects') {
+    componentDidMount() {
+        if (this.props.route === '/projects') {
             setTimeout(() => {
                 this.props.scrollTo('projects');
-            },1)
+            }, 1)
         }
     }
 
     render() {
-        let projectUrl = this.props.route.split('/')[2]; 
-        if( !projectUrl ) {
+        let projectUrl = this.props.route.split('/')[2];
+        if (!projectUrl) {
             return (
                 <div className="Home page columns">
                     <div className="column col-12 heroSection">
-                        <img className="text-animate abs-left-bottom col-12" src="/build/images/home/hero_background.png" style={{ 'maxWidth' : '500px', 'animationDuration' : '6s' }} />
+                        <div className="abs-left-bottom" >
+                            <img className="text-animate col-12" src="/build/images/home/hero_background.png" style={{ 'maxWidth': '500px', 'animationDuration': '6s' }} />
+                        </div>
                         <div className="abs-left-center heroText">
-                            <h1>
-                                <span className="text-animate" style={{"animationDelay":'.5s'}}>We make</span> 
-                                <span className="text-animate" style={{"animationDelay":'1s'}}>rooking</span> 
-                                <span className="text-animate"  style={{"animationDelay":'1.5s'}}>good stuff</span>
-                            </h1>
-                            <h6>
-                                <span className="text-animate" style={{"animationDelay":'2.5s'}}>Your problems.</span> 
-                                <span className="text-animate margin-left-20" style={{"animationDelay":'3.5s'}}>Our magic</span>
-                            </h6>
+                                <h1>
+                                    <span className="text-animate" style={{ "animationDelay": '.5s' }}>We make</span>
+                                    <span className="text-animate" style={{ "animationDelay": '1s' }}>rooking</span>
+                                    <span className="text-animate" style={{ "animationDelay": '1.5s' }}>good stuff</span>
+                                </h1>
+                                <h6>
+                                    <span className="text-animate" style={{ "animationDelay": '2.5s' }}>Your problems.</span>
+                                    <span className="text-animate margin-left-20" style={{ "animationDelay": '3.5s' }}>Our magic</span>
+                                </h6>
                         </div>
                     </div>
                     <div id="projects" className="column col-12 projectSection">
-                        <h2 className="text-primary skew-tranition"  data-aos="skew-tranition">Projects</h2>
+                        <h2 className="text-primary" data-aos="skew-tranition">Projects</h2>
                         <div className="columns">
-                            {this.state.projects.map(( project, index ) => {
+                            {this.state.projects.map((project, index) => {
                                 let isEven = index % 2 == 0;
                                 return (
-                                    <div key={ index } className="project column col-12">
-                                        
-                                            { isEven ? 
-                                                <div className="columns">
-                                                    <div className="column col-6 padding-right-80">
-                                                        <h4>{project.title}</h4>
-                                                        <p>{project.shortDescription}</p>
-                                                        <Link to={'/projects/' + project.url}>
-                                                            <button className="btn btn-primary">
-                                                                View Project
+                                    <div key={index} className="project column col-12">
+
+                                        {isEven ?
+                                            <div className="columns">
+                                                <div className="column col-6 padding-right-80">
+                                                    <h2>{project.title}</h2>
+                                                    <p>{project.shortDescription}</p>
+                                                    <Link to={'/projects/' + project.url}>
+                                                        <button className="btn btn-primary margin-top-40">
+                                                            View Project
                                                             </button>
-                                                        </Link>
-                                                    </div>
-                                                    <div className="rel column col-6 imageSection">
-                                                        <div className="abs-right-center imageBackground" style={{ 'backgroundImage' : 'url(/build/images/projects/' + project.url + '/cover-back.jpg)'}}>
-                                                            <img className="abs-left-center " src={'/build/images/projects/' + project.url + '/cover-front.png'} />
-                                                        </div>
-                                                    </div>
+                                                    </Link>
                                                 </div>
-                                                :
-                                                <div className="columns">
-                                                    <div className="rel column col-6 imageSection even">
-                                                        <div className="abs-left-center imageBackground" style={{ 'backgroundImage' : 'url(/build/images/projects/' + project.url + '/cover-back.jpg)'}}>
-                                                            <img className="abs-right-center " src={'/build/images/projects/' + project.url + '/cover-front.png'} />
-                                                        </div>
-                                                    </div>
-                                                    <div className="column col-6 padding-left-80">
-                                                        <h4>{project.title}</h4>
-                                                        <p>{project.shortDescription}</p>
-                                                        <Link to={'/projects/' + project.url}>
-                                                            <button className="btn btn-primary">
-                                                                View Project
+                                                <div className="rel column col-6 imageSection">
+                                                    <ParallaxBanner className={`abs-right-center imageBackground ${ project.oversize ? 'parrallaxBanner-100-right' : '' }`}
+                                                        layers={[
+                                                            {
+                                                                image: 'build/images/projects/' + project.url + '/cover-back.jpg',
+                                                                amount: 0.1,
+                                                                slowerScrollRate: false,
+                                                            },
+                                                            {
+                                                                image: 'build/images/projects/' + project.url + '/cover-front.png',
+                                                                amount: 0.5,
+                                                                slowerScrollRate: false,
+                                                            },
+
+                                                        ]}/>
+                                                </div>
+                                            </div>
+                                            :
+                                            <div className="columns">
+                                                <div className="rel column col-6 imageSection even">
+                                                    <ParallaxBanner className={`abs-left-center imageBackground ${ project.oversize ? 'parrallaxBanner-100-left' : '' }`}
+                                                        layers={[
+                                                            {
+                                                                image: 'build/images/projects/' + project.url + '/cover-back.jpg',
+                                                                amount: 0.1,
+                                                                slowerScrollRate: false,
+                                                            },
+
+                                                            {
+                                                                image: 'build/images/projects/' + project.url + '/cover-front.png',
+                                                                amount: 0.5,
+                                                                slowerScrollRate: false,
+                                                            },
+                                                        ]}/>
+                                                </div>
+                                                <div className="column col-6 padding-left-80">
+                                                    <h2>{project.title}</h2>
+                                                    <p>{project.shortDescription}</p>
+                                                    <Link to={'/projects/' + project.url}>
+                                                        <button className="btn btn-primary margin-top-40">
+                                                            View Project
                                                             </button>
-                                                        </Link>
-                                                    </div>
+                                                    </Link>
                                                 </div>
-                                            }
+                                            </div>
+                                        }
                                     </div>
                                 )
                             })}
-                           
+
                         </div>
                         <div className="columns hireUsSection">
-                            <div className="column col-6" style={{ 'backgroundImage' : 'url(/build/images/projects/hire.jpg)' }}>
+                            <div className="column col-6" style={{ 'backgroundImage': 'url(/build/images/projects/hire.jpg)' }}>
                                 <h4>Your next project?</h4>
                             </div>
                             <div className="rel column col-6">
@@ -142,29 +171,29 @@ export default class Home extends React.Component {
                 </div>
             );
         } else {
-            let project = _.find( this.state.projects, ( item ) => {
+            let project = _.find(this.state.projects, (item) => {
                 return item.url === projectUrl
             });
             return (
                 <div className="Home page columns">
-                <div className="column col-12 projectSection">
-                    <div className="project" style={{ 'margin' : '0px' }}>
-                        <div className="columns">
-                            <div className="column col-6 padding-right-80">
-                                <h1 className="text-primary" >{project.title}</h1>
-                                { project.description }
-                            </div>
-                            <div className="rel column col-6 imageSection">
-                                <div className="abs-right-center imageBackground" style={{ 'backgroundImage' : 'url(/build/images/projects/' + project.url + '/cover-back.jpg)'}}>
-                                    <img className="abs-left-center " src={'/build/images/projects/' + project.url + '/cover-front.png'} />
+                    <div className="column col-12 projectSection">
+                        <div className="project" style={{ 'margin': '0px' }}>
+                            <div className="columns">
+                                <div className="column col-6 padding-right-80">
+                                    <h1 className="text-primary" >{project.title}</h1>
+                                    {project.description}
+                                </div>
+                                <div className="rel column col-6 imageSection">
+                                    <div className="abs-right-center imageBackground" style={{ 'backgroundImage': 'url(/build/images/projects/' + project.url + '/cover-back.jpg)' }}>
+                                        <img className="abs-left-center " src={'/build/images/projects/' + project.url + '/cover-front.png'} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             );
         }
-       
+
     }
 }

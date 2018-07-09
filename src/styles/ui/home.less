@@ -20,35 +20,56 @@
     }
 
     .projectSection {
+        z-index: 1;
+        background-color: #fff;
         padding: 180px 100px;
         h2 {
             font-size: 5vw;
         }
 
         .project {
-            margin-top: 180px;
-            margin-bottom: 300px;
+      
+            margin-top: 300px;
+            margin-bottom: 200px;
             h4{
                 font-weight: 500;
                 font-size: 32px;
                 letter-spacing: 1.2px;
             }
+            .parrallaxBanner-100-right {
+                .parallax-outer {
+                    &:last-child {
+                        right: -100px !important;
+                    }
+                } 
+            }
+            .parrallaxBanner-100-left {
+                .parallax-outer {
+                    &:last-child {
+                        left: -100px !important;
+                    }
+                } 
+            }
             .imageSection {
                 padding: 40px 0;
                 -webkit-backface-visibility: hidden;
                 .imageBackground {
-                    border-radius: 10px 0 0 10px;
-                    background-color: @greyColor;
-                    background-size: cover;
-                    // background-attachment: /;
-                    background-position: center;
-                    height: 450px;
+                    position: absolute !important;
+                    overflow: visible !important;
+                    height: 600px;
                    -webkit-backface-visibility: hidden;
                     width: calc(~"100% + 100px");
                     margin-right: -100px;
                     img {
                         margin-top: 30px;
                         height: calc(~"100% + 150px");
+                    }
+                    .parallax-banner-layer-0 {
+                        border-radius: 10px 0 0 10px;
+                    }
+                    .parallax-banner-layer-1 {
+                        background-size: contain !important;
+                        background-repeat: no-repeat;
                     }
                 }
                 &.even {
@@ -57,7 +78,11 @@
                         border-radius: 0 10px 10px 0;
                         margin-right: 0px;
                         margin-left: -100px;
+                        .parallax-banner-layer-0 {
+                            border-radius: 0 10px 10px 0;
+                        }
                     }
+                    
                 }
             }
         }

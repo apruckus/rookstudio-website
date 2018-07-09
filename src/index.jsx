@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'
@@ -78,22 +79,24 @@ class App extends React.Component {
           }
           console.log( route )
         return (
-            <div className="container">
-                {(() => {
-                    switch (route) {
-                        case '/':  case '/projects': default:
-                            return (
-                                <Home route={route} scrollTo={this.scrollTo} />
-                            );
-                        case '/about-us':
-                            return (
-                                <AboutUs route={route} />
-                            )
-                    }
-                })()}
-                 <Menu scrollTo={this.scrollTo} />
-                <Footer />
-            </div>
+            <ParallaxProvider ref="parallaxController">
+                <div className="container">
+                    {(() => {
+                        switch (route) {
+                            case '/':  case '/projects': default:
+                                return (
+                                    <Home route={route} scrollTo={this.scrollTo} />
+                                );
+                            case '/about-us':
+                                return (
+                                    <AboutUs route={route} />
+                                )
+                        }
+                    })()}
+                    <Menu scrollTo={this.scrollTo} />
+                    <Footer />
+                </div>
+            </ParallaxProvider>
         );
 	}
 }

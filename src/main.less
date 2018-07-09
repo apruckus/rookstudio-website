@@ -266,10 +266,15 @@ form{
 }
 
 .skew-tranition {
-    transition: 1s @ease transform;
-    transform: skewX(-45deg) scaleX(4) translateX(0%);
+    transition: 1.5s @ease transform !important;
+    &.left {
+        transform: skewX(-45deg) scaleX(6) translateX(-200%);
+    }
+    &.right {
+        transform: skewX(45deg) scaleX(6) translateX(200%);
+    }
     &.aos-animate {
-        transition: 1s @ease transform;
+        transition: 1.5s @easeOut transform !important;
         transform: skewX(0deg) scaleX(1) translateX(0%);
     }
 }
