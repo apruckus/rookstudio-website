@@ -3,6 +3,11 @@
 @import './styles/variables.less';
 
 html{
+    // position: fixed;
+    // top:0;
+    // left:0;
+    // right:0;
+    // bottom:0;
 }
 body {
     font-family: 'Rubik', sans-serif;
@@ -11,10 +16,15 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    
 }
 #app{
     background-color: #fff;
     
+}
+
+.container {
+    transition: .6s @easeOut transform;
 }
 
 h1, h2, h3, h3, h4, h5, h6{
@@ -212,6 +222,28 @@ form{
     }
 }
 
+.hireUsSection{
+    h4{
+        font-weight: 500;
+        font-size: 32px;
+        letter-spacing: 1.2px;
+        color: #fff;
+    }
+    .column {
+        padding: 35px;
+        &:first-child {
+            background-position: bottom right;
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+        }
+    }
+    margin-top: 150px;
+    background-color: @primaryColor;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 @media(max-width:@break-sm){
     .col-max{
         padding: 0 10px;
@@ -226,4 +258,29 @@ form{
         border:none;
         padding: 20px;
     }        
+}
+
+@keyframes textIn {
+    0% { transform: skewX(-45deg) scaleX(4) translateX(-200%); }
+    100% { transform: skewX(0deg) scaleX(1) translateX(0%); }
+}
+.text-animate {
+    transform: skewX(-45deg) scaleX(6) translateX(-200%);
+    transform-origin: left top;
+    display: inline-block;
+    animation: textIn 1.5s forwards @easeOut;
+}
+
+.skew-tranition {
+    transition: 1.5s @ease transform !important;
+    &.left {
+        transform: skewX(-45deg) scaleX(6) translateX(-200%);
+    }
+    &.right {
+        transform: skewX(45deg) scaleX(6) translateX(200%);
+    }
+    &.aos-animate {
+        transition: 1.5s @easeOut transform !important;
+        transform: skewX(0deg) scaleX(1) translateX(0%);
+    }
 }
