@@ -94,8 +94,8 @@ export default class Home extends React.Component {
 
                                         {isEven ?
                                             <div className="columns">
-                                                <div className="column col-6 padding-right-80">
-                                                    <h2>{project.title}</h2>
+                                                <div className="column col-6 col-md-12 padding-right-80">
+                                                    <h3>{project.title}</h3>
                                                     <p>{project.shortDescription}</p>
                                                     <Link to={'/projects/' + project.url}>
                                                         <button className="btn btn-primary margin-top-40">
@@ -103,8 +103,8 @@ export default class Home extends React.Component {
                                                             </button>
                                                     </Link>
                                                 </div>
-                                                <div className="rel column col-6 imageSection">
-                                                    <ParallaxBanner className={`abs-right-center imageBackground ${ project.oversize ? 'parrallaxBanner-100-right' : '' }`}
+                                                <div className="rel column col-6 col-md-12  imageSection">
+                                                    <ParallaxBanner className={`abs-right-center rel-md imageBackground ${ project.oversize ? 'parrallaxBanner-100-right' : '' }`}
                                                         layers={[
                                                             {
                                                                 image: 'build/images/projects/' + project.url + '/cover-back.jpg',
@@ -122,15 +122,14 @@ export default class Home extends React.Component {
                                             </div>
                                             :
                                             <div className="columns">
-                                                <div className="rel column col-6 imageSection even">
-                                                    <ParallaxBanner className={`abs-left-center imageBackground ${ project.oversize ? 'parrallaxBanner-100-left' : '' }`}
+                                                <div className="rel column col-6 col-md-12 imageSection even">
+                                                    <ParallaxBanner className={`abs-left-center rel-md imageBackground ${ project.oversize ? 'parrallaxBanner-100-left' : '' }`}
                                                         layers={[
                                                             {
                                                                 image: 'build/images/projects/' + project.url + '/cover-back.jpg',
                                                                 amount: 0.1,
                                                                 slowerScrollRate: false,
                                                             },
-
                                                             {
                                                                 image: 'build/images/projects/' + project.url + '/cover-front.png',
                                                                 amount: 0.5,
@@ -138,8 +137,8 @@ export default class Home extends React.Component {
                                                             },
                                                         ]}/>
                                                 </div>
-                                                <div className="column col-6 padding-left-80">
-                                                    <h2>{project.title}</h2>
+                                                <div className="column col-6 col-md-12 padding-left-80">
+                                                    <h3>{project.title}</h3>
                                                     <p>{project.shortDescription}</p>
                                                     <Link to={'/projects/' + project.url}>
                                                         <button className="btn btn-primary margin-top-40">
